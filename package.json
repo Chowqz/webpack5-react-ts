@@ -1,0 +1,77 @@
+{
+  "name": "webpack5-react-ts",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.dev.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js",
+    "build:analy": "cross-env NODE_ENV=production webpack --config ./build/webpack.analy.config.js",
+    "server": "http-server ./dist -p 3008",
+    "pre-commit": "lint-staged && yarn type:check",
+    "lint": "eslint --ext .js --ext .ts src/",
+    "type:check": "tsc --noEmit --skipLibCheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@types/lodash": "^4.14.195",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
+    "core-js": "^3.30.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.4",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "html-webpack-plugin": "^5.5.1",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "lint-staged": "^13.2.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "prettier": "^3.0.0",
+    "react-refresh": "^0.14.0",
+    "speed-measure-webpack-plugin": "^1.5.0",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.83.1",
+    "webpack-bundle-analyzer": "^4.8.0",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0",
+    "webpack-merge": "^5.9.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn run pre-commit"
+    }
+  }
+}
