@@ -1,23 +1,32 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
+  'env': {
+    'browser': true,
+    'es2021': true,
   },
-  extends: [
+  'extends': [
     'eslint:recommended',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+  'overrides': [
+    {
+      'env': {
+        'node': true,
+      },
+      'files': ['.eslintrc.{js,cjs}'],
+      'parserOptions': {
+        'sourceType': 'script',
+      },
     },
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+  ],
+  'parser': '@typescript-eslint/parser',
+  'parserOptions': {
+    'ecmaVersion': 'latest',
+    'sourceType': 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
-  rules: {
+  'plugins': ['@typescript-eslint', 'react'],
+  'rules': {
     // 当 ESLint 和 Prettier 规则冲突时，关闭 Prettier 的规则
     'prettier/prettier': 'off',
     // 不加分号，加了会报错
@@ -242,5 +251,10 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 }
