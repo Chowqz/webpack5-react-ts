@@ -26,7 +26,16 @@ module.exports = {
         test: /\.css$/i,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[local]__[hash:base64:5]',
+                exportLocalsConvention: 'camelCaseOnly',
+              },
+            },
+          },
         ],
         include: [path.resolve(__dirname, '../src')],
       },
@@ -34,7 +43,16 @@ module.exports = {
         test: /\.less$/i,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: '[local]__[hash:base64:5]',
+                exportLocalsConvention: 'camelCaseOnly',
+              },
+            },
+          },
           'less-loader',
         ],
         include: [path.resolve(__dirname, '../src')],
