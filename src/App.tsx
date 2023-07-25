@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div>
-      <div className="title" style={{ width: '100px' }} onClick={() => 2}>
+      <div className="title ml-16" style={{ width: '100px' }} onClick={() => 2}>
         App index
       </div>
       <input type="text" />

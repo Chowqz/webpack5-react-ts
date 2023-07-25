@@ -1,4 +1,4 @@
-import { add } from '~/util'
+import { add } from '@/util'
 
 test('util add 1 + 2', () => {
   expect(add(1, 2)).toBe(3)

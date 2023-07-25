@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { cssLoaderConfig } = require('./utils')
 
 const devMode = process.env.NODE_ENV === 'development'
 
@@ -22,41 +23,42 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.css$/i,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                auto: true,
-                localIdentName: '[local]__[hash:base64:5]',
-                exportLocalsConvention: 'camelCaseOnly',
-              },
-            },
-          },
-        ],
-        include: [path.resolve(__dirname, '../src')],
-      },
-      {
-        test: /\.less$/i,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                auto: true,
-                localIdentName: '[local]__[hash:base64:5]',
-                exportLocalsConvention: 'camelCaseOnly',
-              },
-            },
-          },
-          'less-loader',
-        ],
-        include: [path.resolve(__dirname, '../src')],
-      },
+      // {
+      //   test: /\.css$/i,
+      //   use: [
+      //     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: {
+      //           auto: true,
+      //           localIdentName: '[local]__[hash:base64:5]',
+      //           exportLocalsConvention: 'camelCaseOnly',
+      //         },
+      //       },
+      //     },
+      //   ],
+      //   include: [path.resolve(__dirname, '../src')],
+      // },
+      // {
+      //   test: /\.less$/i,
+      //   use: [
+      //     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: {
+      //           auto: true,
+      //           localIdentName: '[local]__[hash:base64:5]',
+      //           exportLocalsConvention: 'camelCaseOnly',
+      //         },
+      //       },
+      //     },
+      //     'less-loader',
+      //   ],
+      //   include: [path.resolve(__dirname, '../src')],
+      // },
+      ...cssLoaderConfig,
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset',
@@ -82,7 +84,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, '../src'),
+      '@': path.resolve(__dirname, '../src'),
     },
     extensions: ['.js', '.tsx', '.ts'],
   },
