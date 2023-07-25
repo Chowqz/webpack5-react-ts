@@ -83,6 +83,10 @@
       "prettier --write",
       "eslint --fix",
       "git add"
+    ],
+    "*.{css,less,scss,styl}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "config": {

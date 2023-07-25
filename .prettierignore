@@ -8,3 +8,4 @@ package.json
 package-lock.json
 tsconfig.json
 public
+dist
