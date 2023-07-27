@@ -1,6 +1,6 @@
-@import url('~@/common.css');
+@import '~@/common.css';
 
 .title {
-  color: red;
   font-size: 16px;
+  color: red;
 }

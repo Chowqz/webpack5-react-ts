@@ -8,11 +8,14 @@
     "build:analy": "cross-env NODE_ENV=production webpack --config ./build/webpack.analy.config.js",
     "server": "http-server ./dist -p 3008",
     "pre-commit": "lint-staged && npm run type:check",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "eslint": "eslint --ext .js,.jsx,.ts,.tsx src/",
+    "stylelint": "stylelint \"src/**/*.css\" \"src/**/*.less\" \"src/**/*.scss\" --fix",
     "type:check": "tsc --noEmit --skipLibCheck",
     "test": "jest",
-    "lint-tsc-test": "concurrently --kill-others-on-fail \"npm run lint\" \"npm run type:check\" \"npm run test\"",
     "prettier": "npx prettier --write .",
+    "prettier-check": "prettier --check .",
+    "lint": "npm run eslint && npm run stylelint && npm run prettier-check",
+    "lint-tsc-test": "concurrently --kill-others-on-fail \"npm run lint\" \"npm run type:check\" \"npm run test\"",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -65,6 +68,10 @@
     "sass-loader": "^13.3.2",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.3",
+    "stylelint": "^15.10.2",
+    "stylelint-config-recess-order": "^4.3.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
     "stylus": "^0.59.0",
     "stylus-loader": "^7.1.3",
     "webpack": "^5.88.2",
@@ -82,10 +89,6 @@
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "eslint --fix",
-      "git add"
-    ],
-    "*.{css,less,scss}": [
-      "prettier --write",
       "git add"
     ]
   },

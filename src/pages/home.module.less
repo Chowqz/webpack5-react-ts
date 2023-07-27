@@ -7,6 +7,7 @@
 }
 
 .bg-box {
+  display: block;
   width: 200px;
   height: 200px;
   background-image: url('~@/assets/img.jpeg');
@@ -24,17 +25,17 @@
 }
 
 .float-item {
+  float: left;
   width: 60px;
   height: 80px;
   background-color: green;
-  float: left;
 }
 
 .clearfix::after {
-  content: '';
-  height: 0;
   display: block;
+  height: 0;
   clear: both;
+  content: '';
 }
 
 .flex-container {
@@ -43,8 +44,11 @@
 
 .flex-box {
   width: 30px;
-
   height: 30px;
   background-color: hotpink;
   border: 1px solid black;
+}
+
+.list-container {
+  width: 100%;
 }

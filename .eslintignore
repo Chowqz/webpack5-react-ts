@@ -1,1 +1,4 @@
 build
+dist
+public
+.stylelintrc.js
