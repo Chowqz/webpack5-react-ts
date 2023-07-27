@@ -11,7 +11,7 @@ interface Props {
 
 const Home = (props: Props) => {
   const a = 1
-  // console.log(a.toString())
+  console.log(a.toString())
   console.log(add(66, 34))
   console.log(styles)
   return (
